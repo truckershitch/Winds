@@ -43,5 +43,5 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 VOLUME [ "$APP_CONTENT", "$DB_CONTENT" ]
 
-EXPOSE 3000
-CMD ["pm2-docker", "process.json"]
+EXPOSE 1337
+CMD ["pm2-docker", "process_dev.json"]
