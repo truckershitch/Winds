@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [[ "$*" == pm2-docker*process.json* ]]; then
+if [[ "$*" == pm2-docker*process_dev.json* ]]; then
   # Fix permissions before starting
   gosu root chown -R mongodb:mongodb "$DB_CONTENT"
 
@@ -16,7 +16,7 @@ if [[ "$*" == pm2-docker*process.json* ]]; then
   # fix permissions, create empty .env file and bind to port 3000
   gosu root chown -R app:app "$APP_CONTENT" \
     && touch "$APP_CONTENT/.env" \
-    && sed -i 's/"PORT": 80,/"PORT": 3000,/g' process.json
+    && sed -i 's/"PORT": 80,/"PORT": 3000,/g' process_dev.json
 
   # Install production dependencies
   npm install --production
